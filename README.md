@@ -1,68 +1,31 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Dagpay React
 
-## Available Scripts
+Welcome to Dagpay, a custom app that allows users to track payroll benefits deductions for employees and their dependents.  The original [Dagpay](https://github.com/derickgross/Dagpay) consists of a simple HTML, CSS and vanilla JavaScript single page app and C# Azure Function endpoints supported by an Azure SQL database.  Dagpay React supplements with a React client that uses the same API.
 
-In the project directory, you can run:
+## Dagpay front-end client
 
-### `npm start`
+The Dagpay React will be hosted in the cloud, likely using Surge:
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+(link to deployed app coming soon)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The client has four sections:
 
-### `npm test`
+**Total Deductions** - the sum of deductions for all employees and dependents, which is updated as new beneficiaries are added.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Beneficiaries** - a list of all employees, their individual deductions, and the sum of deductions for their dependents (click an employee to view individual deductions for dependents).
 
-### `npm run build`
+**Add New Employee** - provide a unique numeric Employee Id, First Name, and Last Name
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Add New Dependent** - provide a First Name and Last Name, and select an associated employee
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Dagpay API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Use the following endpoints to interact with the Dagpay C# Azure Functions API:
 
-### `npm run eject`
+**_https://dagpaypayroll.azurewebsites.net/api/AddEmployee_** - add a new employee
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**_https://dagpaypayroll.azurewebsites.net/api/AddDependent_** - add a new dependent
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**_https://dagpaypayroll.azurewebsites.net/api/GetEmployeesAndDependents_** - get a JSON response with all employees and dependents, and their individual payroll deductions
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+_* Based on total deductions of $1000/year for each employee and $500/year for each dependent, Dagpay calculates the portion owed for each of 26 biweekly pay periods in a year. Beneficiaries whose first names begin with 'A' receive a 10% discount._

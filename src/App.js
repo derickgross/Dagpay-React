@@ -1,26 +1,68 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import Main from './components/Main/Main'
+import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesIndex'
+import CreateEmployee from './components/CreateEmployee/CreateEmployee'
+import CreateDependent from './components/CreateDependent/CreateDependent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			currentView: "Beneficiaries"
+		}
+
+		this.handleClick = this.handleClick.bind(this);
+		this.setCurrentView = this.setCurrentView.bind(this);
+		this.displayCurrentView = this.displayCurrentView.bind(this);
+	}
+
+	handleClick(event) {
+		event.preventDefault();
+		console.log('Click event handled! event.target.href: ' + event.target.dataset.view);
+
+		const newView = event.target.dataset.view;
+
+		this.setCurrentView(newView);
+
+		this.displayCurrentView();
+	}
+
+	async setCurrentView(view) {
+		await this.setState(prevState => {
+			return { currentView: view }
+		});
+	}
+
+	displayCurrentView() {
+		switch (this.state.currentView) {
+			case "BeneficiariesIndex":
+				return <BeneficiariesIndex />
+			case "CreateEmployee":
+				return <CreateEmployee />
+			case "CreateDependent":
+				return <CreateDependent />
+			default:
+				return <BeneficiariesIndex />
+		}
+	}
+
+	render() {
+		const navbarProps = {
+			handleClick: this.handleClick
+		}
+
+		return (
+			<div className="App">
+				<Header navbar={navbarProps}/>
+				<Main currentView={this.displayCurrentView}/>
+				<Footer />
+			</div>
+		)
+	}
 }
 
 export default App;
