@@ -1,8 +1,12 @@
 import React from 'react'
 
 const BeneficiariesIndex = (props) => {
+	const employees = props.employees;
+	
 	return (
-		<h2>Beneficiaries Index content</h2>
+		<div>
+			<h2>Beneficiaries</h2>
+		</div>
 	)
 }
 

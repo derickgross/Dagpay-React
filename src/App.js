@@ -12,7 +12,8 @@ class App extends React.Component {
 		super(props);
 
 		this.state = {
-			currentView: "Beneficiaries"
+			currentView: "Beneficiaries",
+			employees: []
 		}
 
 		this.handleClick = this.handleClick.bind(this);
@@ -40,13 +41,13 @@ class App extends React.Component {
 	displayCurrentView() {
 		switch (this.state.currentView) {
 			case "BeneficiariesIndex":
-				return <BeneficiariesIndex />
+				return <BeneficiariesIndex employees={this.state.employees}/>
 			case "CreateEmployee":
 				return <CreateEmployee />
 			case "CreateDependent":
 				return <CreateDependent />
 			default:
-				return <BeneficiariesIndex />
+				return <BeneficiariesIndex employees={this.state.employees}/>
 		}
 	}
 
