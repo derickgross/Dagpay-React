@@ -11,7 +11,7 @@ const BeneficiaryForm = (props) => {
 	return (
 		<div>
 			{inputs}
-			<button>A useless button!</button>
+			<button className="submitButton">Submit</button>
 		</div>
 	)
 }
