@@ -1,16 +1,33 @@
 import React from 'react'
 
 const FormSelect = (props) => {
+	const options = props.options.map(option => {
+
+	})
+
+	options.push(
+		// replace static options text with a dynamic message from props
+		<option 
+			value="" 
+			disabled="" 
+			selected=""
+		>
+			Select the dependent's employee
+		</option>
+	);
+
 	return (
-		<input 
-			type={props.type}
-			id={props.id}
+		<select 
+			//type={props.type}
+			//id={props.id}
 			onChange={props.onChange}
-			className="formInput"
+			//className="formInput"
 			name={props.name}
-			placeholder={props.placeholder}
+			//placeholder={props.placeholder}
 			data-parameter={props.parameter}
-		/>
+		>
+			{/* enter options here */}
+		</select>
 	)
 }
 

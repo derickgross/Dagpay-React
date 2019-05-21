@@ -20,7 +20,11 @@ const FormElement = (props) => {
 				break;
 			case "select":
 				return (
-					"test"
+					<FormSelect 
+						onChange={props.onChange}
+						name={props.name}
+						data-parameter={props.parameter}
+					/>
 				)
 				break;
 			default:
