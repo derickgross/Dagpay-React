@@ -1,16 +1,17 @@
 import React from 'react'
+import Employee from '../Employee/Employee'
 
 const BeneficiariesIndex = (props) => {
 	const employees = props.employees.map(employee => {
 		return (
-			<li 
+			<Employee 
 				key={employee.employeeid}
-				id={`employee-${employee.employeeid}`}
-				className="employee"
-				tabIndex="0"
-			>
-				{`${employee.firstname} ${employee.lastname}`}
-			</li>
+				employeeId={employee.employeeid}
+				firstName={employee.firstname}
+				lastName={employee.lastname}
+				deduction={employee.deduction}
+				dependents={!!employee.dependents ? employee.dependents : []}
+			/>
 		)
 	});
 
