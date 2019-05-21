@@ -31,7 +31,7 @@ class App extends React.Component {
 	}
 
 	fetchEmployeesAndDependents() {
-		fetch('https://dagpay2.azurewebsites.net/api/GetEmployeesAndDependents', {
+		fetch(`${baseURL}/GetEmployeesAndDependents`, {
 			method: 'GET'
 		})
 		.then(response => {
