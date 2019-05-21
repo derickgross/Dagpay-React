@@ -61,6 +61,7 @@ placeholder
 parameter
 labelText
 errorMessage
+elementType
 
 <input type="text" id="employeeId" class="formInput" name="employeeId" placeholder="Enter an integer value">
 
