@@ -3,15 +3,15 @@ import FormOption from '../FormOption/FormOption'
 
 const FormSelect = (props) => {
 	const options = props.options.map(option => {
-		return <FormOption />
+		return <FormOption value={option.employeeid} displayText={`${option.lastname}, ${option.firstname}`}/>
 	})
 
-	options.push(
+	options.unshift(
 		// replace static options text with a dynamic message from props
 		<option 
 			value="" 
-			disabled="" 
-			selected=""
+			disabled="disabled" 
+			selected="selected"
 		>
 			Select the dependent's employee
 		</option>

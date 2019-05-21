@@ -3,11 +3,9 @@ import React from 'react'
 const FormOption = (props) => {
 	return (
 		<option 
-			value="" 
-			disabled="" 
-			selected=""
+			value={props.value} 
 		>
-			Select the dependent's employee
+			{ props.displayText }
 		</option>
 	)
 }

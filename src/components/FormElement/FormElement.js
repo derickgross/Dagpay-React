@@ -24,7 +24,7 @@ const FormElement = (props) => {
 						onChange={props.input.onChange}
 						name={props.input.name}
 						data-parameter={props.input.parameter}
-						options={[]}
+						options={props.options}
 					/>
 				)
 				break;
