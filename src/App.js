@@ -7,6 +7,8 @@ import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesInd
 import CreateEmployee from './components/CreateEmployee/CreateEmployee'
 import CreateDependent from './components/CreateDependent/CreateDependent'
 
+const baseURL = 'https://dagpay2.azurewebsites.net/api';
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -19,6 +21,40 @@ class App extends React.Component {
 		this.handleClick = this.handleClick.bind(this);
 		this.setCurrentView = this.setCurrentView.bind(this);
 		this.displayCurrentView = this.displayCurrentView.bind(this);
+		this.fetchEmployeesAndDependents = this.fetchEmployeesAndDependents.bind(this);
+		this.addEmployee = this.addEmployee.bind(this);
+		this.addDependent = this.addDependent.bind(this);
+	}
+
+	componentDidMount() {
+		this.fetchEmployeesAndDependents();
+	}
+
+	fetchEmployeesAndDependents() {
+		fetch('https://dagpay2.azurewebsites.net/api/GetEmployeesAndDependents', {
+			method: 'GET'//,
+			//url: `${baseURL}/GetEmployeesAndDependents`
+			//url: 'https://dagpay2.azurewebsites.net/api/GetEmployeesAndDependents'
+		})
+		.then(response => {
+			response.json()
+			.then(data => {
+				this.setState(prevState => {
+					return { employees: data }
+				})
+			})
+			.catch(error => console.log('Processing JSON failed: ', error))
+		})
+		//.then(data => console.log(data))
+		.catch(error => console.log('Something went wrong: ', error));
+	}
+
+	addEmployee() {
+
+	}
+
+	addDependent() {
+
 	}
 
 	handleClick(event) {
