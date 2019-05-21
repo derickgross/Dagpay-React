@@ -32,9 +32,7 @@ class App extends React.Component {
 
 	fetchEmployeesAndDependents() {
 		fetch('https://dagpay2.azurewebsites.net/api/GetEmployeesAndDependents', {
-			method: 'GET'//,
-			//url: `${baseURL}/GetEmployeesAndDependents`
-			//url: 'https://dagpay2.azurewebsites.net/api/GetEmployeesAndDependents'
+			method: 'GET'
 		})
 		.then(response => {
 			response.json()
@@ -45,7 +43,6 @@ class App extends React.Component {
 			})
 			.catch(error => console.log('Processing JSON failed: ', error))
 		})
-		//.then(data => console.log(data))
 		.catch(error => console.log('Something went wrong: ', error));
 	}
 
