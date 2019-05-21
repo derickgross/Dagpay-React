@@ -2,9 +2,8 @@ import React from 'react'
 
 const BeneficiariesIndex = (props) => {
 	const employees = props.employees.map(employee => {
-		console.log(employee);
 		return (
-			<h3>{`${employee.firstname} ${employee.lastname}`}</h3>
+			<h3 key={employee.employeeid}>{`${employee.firstname} ${employee.lastname}`}</h3>
 		)
 	});
 
