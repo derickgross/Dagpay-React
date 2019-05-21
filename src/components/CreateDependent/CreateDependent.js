@@ -12,22 +12,3 @@ const CreateDependent = (props) => {
 }
 
 export default CreateDependent
-
-/*
-Dependent form input template
-
-name
-id
-type
-placeholder
-parameter
-labelText
-errorMessage
-
-<input type="text" id="employeeId" class="formInput" name="employeeId" placeholder="Enter an integer value">
-
-employeeId
-firstName
-lastName
-
-*/

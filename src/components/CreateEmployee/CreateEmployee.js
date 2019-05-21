@@ -12,25 +12,3 @@ const CreateEmployee = (props) => {
 }
 
 export default CreateEmployee
-
-
-/*
-Employee form input template
-
-name
-id
-type
-placeholder
-parameter
-labelText
-errorMessage
-
-<input type="text" id="employeeId" class="formInput" name="employeeId" placeholder="Enter an integer value">
-
-employeeId
-firstName
-lastName
-department
-experience
-
-*/
