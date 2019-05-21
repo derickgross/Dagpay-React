@@ -1,8 +1,9 @@
 import React from 'react'
+import FormOption from '../FormOption/FormOption'
 
 const FormSelect = (props) => {
 	const options = props.options.map(option => {
-
+		return <FormOption />
 	})
 
 	options.push(
@@ -26,7 +27,7 @@ const FormSelect = (props) => {
 			//placeholder={props.placeholder}
 			data-parameter={props.parameter}
 		>
-			{/* enter options here */}
+			{ options }
 		</select>
 	)
 }

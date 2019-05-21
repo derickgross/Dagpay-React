@@ -21,9 +21,10 @@ const FormElement = (props) => {
 			case "select":
 				return (
 					<FormSelect 
-						onChange={props.onChange}
-						name={props.name}
-						data-parameter={props.parameter}
+						onChange={props.input.onChange}
+						name={props.input.name}
+						data-parameter={props.input.parameter}
+						options={[]}
 					/>
 				)
 				break;

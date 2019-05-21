@@ -47,7 +47,7 @@ class App extends React.Component {
 	}
 
 	addEmployee() {
-		
+
 	}
 
 	addDependent() {
@@ -78,7 +78,7 @@ class App extends React.Component {
 			case "CreateEmployee":
 				return <CreateEmployee />
 			case "CreateDependent":
-				return <CreateDependent />
+				return <CreateDependent employeeSelectOptions={this.state.employees}/>
 			default:
 				return <BeneficiariesIndex employees={this.state.employees}/>
 		}
