@@ -1,10 +1,10 @@
 import React from 'react'
-import FormInput from '../FormInput/FormInput'
+import FormElement from '../FormElement/FormElement'
 
 const BeneficiaryForm = (props) => {
 	const inputs = props.inputs.map(input => {
 		return (
-			<FormInput input={input} />
+			<FormElement input={input} />
 		)
 	})
 

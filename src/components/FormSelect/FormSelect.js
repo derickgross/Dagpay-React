@@ -1,6 +1,6 @@
 import React from 'react'
 
-const FormInput = (props) => {
+const FormSelect = (props) => {
 	return (
 		<input 
 			type={props.type}
@@ -14,7 +14,7 @@ const FormInput = (props) => {
 	)
 }
 
-export default FormInput
+export default FormSelect
 
 // Form inputs dynamically built from configuration file
 /*

@@ -6,7 +6,8 @@ const employeeFormInputs = [
 		placeholder: "Enter an integer value",
 		parameter: "employeeId",
 		labelText: "Employee Id",
-		errorMessage: "Please enter an integer value for the employee id"
+		errorMessage: "Please enter an integer value for the employee id",
+		elementType: "input"
 	},
 	{
 		name: "First Name",
@@ -15,7 +16,8 @@ const employeeFormInputs = [
 		placeholder: "",
 		parameter: "firstName",
 		labelText: "First Name",
-		errorMessage: "Please enter a first name"
+		errorMessage: "Please enter a first name",
+		elementType: "input"
 	},
 	{
 		name: "Last Name",
@@ -24,7 +26,8 @@ const employeeFormInputs = [
 		placeholder: "",
 		parameter: "lastName",
 		labelText: "Last Name",
-		errorMessage: "Please enter a last name"
+		errorMessage: "Please enter a last name",
+		elementType: "input"
 	},
 	{
 		name: "Department",
@@ -33,7 +36,8 @@ const employeeFormInputs = [
 		placeholder: "",
 		parameter: "department",
 		labelText: "Department",
-		errorMessage: "Please enter a department"
+		errorMessage: "Please enter a department",
+		elementType: "input"
 	},
 	{
 		name: "Experience",
@@ -42,7 +46,8 @@ const employeeFormInputs = [
 		placeholder: "Enter an integer value (years)",
 		parameter: "experience",
 		labelText: "Experience",
-		errorMessage: "Please enter an integer value for experience"
+		errorMessage: "Please enter an integer value for experience",
+		elementType: "input"
 	}
 ];
 
@@ -75,7 +80,8 @@ const dependentFormInputs = [
 		placeholder: "Enter an integer value",
 		parameter: "employeeId",
 		labelText: "Employee Id",
-		errorMessage: "Please enter an integer value for the employee id"
+		errorMessage: "Please enter an integer value for the employee id",
+		elementType: "select"
 	},
 	{
 		name: "First Name",
@@ -84,7 +90,8 @@ const dependentFormInputs = [
 		placeholder: "",
 		parameter: "firstName",
 		labelText: "First Name",
-		errorMessage: "Please enter a first name"
+		errorMessage: "Please enter a first name",
+		elementType: "input"
 	},
 	{
 		name: "Last Name",
@@ -93,7 +100,8 @@ const dependentFormInputs = [
 		placeholder: "",
 		parameter: "lastName",
 		labelText: "Last Name",
-		errorMessage: "Please enter a last name"
+		errorMessage: "Please enter a last name",
+		elementType: "input"
 	}
 ];
 
@@ -107,6 +115,7 @@ placeholder
 parameter
 labelText
 errorMessage
+elementType
 
 <input type="text" id="employeeId" class="formInput" name="employeeId" placeholder="Enter an integer value">
 
