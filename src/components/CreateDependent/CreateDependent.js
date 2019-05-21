@@ -6,7 +6,12 @@ const CreateDependent = (props) => {
 	return (
 		<div>
 			<h2>Create Dependent view</h2>
-			<BeneficiaryForm onChange={props.handleFormChange} onSubmit={props.handleEmployeeFormSubmit} inputs={formInputs} />
+			<BeneficiaryForm 
+				onChange={props.handleFormChange} 
+				onSubmit={props.handleEmployeeFormSubmit} 
+				inputs={formInputs} 
+				options={props.employeeSelectOptions}
+			/>
 		</div>
 	)
 }

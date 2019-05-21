@@ -4,7 +4,7 @@ import FormElement from '../FormElement/FormElement'
 const BeneficiaryForm = (props) => {
 	const inputs = props.inputs.map(input => {
 		return (
-			<FormElement input={input} />
+			<FormElement input={input} options={input.elementType !== "select" ? props.options : "none" }/>
 		)
 	})
 
