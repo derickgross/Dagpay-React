@@ -7,10 +7,11 @@ const CreateDependent = (props) => {
 		<div>
 			<h2>Create Dependent view</h2>
 			<BeneficiaryForm 
-				onChange={props.handleFormChange} 
+				onChange={props.onFormElementChange} 
 				onSubmit={props.handleEmployeeFormSubmit} 
 				inputs={formInputs} 
 				options={props.employeeSelectOptions}
+				formValues={props.formValues}
 			/>
 		</div>
 	)

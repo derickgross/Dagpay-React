@@ -10,11 +10,12 @@ const FormElement = (props) => {
 					<FormInput 
 						type={props.input.type}
 						id={props.input.id}
-						onChange={props.input.onChange}
-						className="formInput"
+						onChange={props.onChange}
+						className="form-input"
 						name={props.input.name}
 						placeholder={props.input.placeholder}
 						data-parameter={props.input.parameter}
+						value={props.value}
 					/>
 				)
 				break;
@@ -25,6 +26,7 @@ const FormElement = (props) => {
 						name={props.input.name}
 						data-parameter={props.input.parameter}
 						options={props.options}
+						value={props.value}
 					/>
 				)
 				break;

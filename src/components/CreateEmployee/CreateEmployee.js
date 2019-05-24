@@ -6,9 +6,31 @@ const CreateEmployee = (props) => {
 	return (
 		<section>
 			<h2>Add Employee view</h2>
-			<BeneficiaryForm onChange={props.handleFormChange} onSubmit={props.handleEmployeeFormSubmit} inputs={formInputs} />
+			<BeneficiaryForm 
+				onChange={props.onFormElementChange} 
+				onSubmit={props.handleEmployeeFormSubmit} 
+				inputs={formInputs} 
+			/>
 		</section>
 	)
 }
 
 export default CreateEmployee
+
+// vanilla JS version body and fetch call
+// const body = `employeeid=${employee.employeeid}&firstname=${employee.firstname}&lastname=${employee.lastname}&department=${employee.department}&experience=${employee.experience}`;
+
+// fetch(addEmployeeEndpoint, { method: 'POST', body: body, headers: { 'Content-type': 'application/x-www-form-urlencoded' } })
+// .then(function(response) {
+//   if (response.status === 200) {
+//     const confirmationElement = document.getElementById('confirmEmployeeAdded');
+//     displayConfirmationMessage(confirmationElement, employee);
+//     clearForms();
+//     populatePage();
+//   } else {
+//     displayErrorMessage(errorElement, employee);
+//   }
+// })
+// .catch(function(error) {
+//   displayErrorMessage(errorElement, employee);
+// });

@@ -18,7 +18,7 @@ const BeneficiariesIndex = (props) => {
 	return (
 		<div>
 			<h2>Beneficiaries</h2>
-			<ul>
+			<ul onClick={props.displayDependentsListener} onKeyDown={props.displayDependentsListener}>
 				{employees}
 			</ul>
 		</div>

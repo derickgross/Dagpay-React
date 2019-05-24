@@ -8,13 +8,11 @@ const FormSelect = (props) => {
 
 	options.unshift(
 		// replace static options text with a dynamic message from props
-		<option 
-			value="" 
-			disabled="disabled" 
-			selected="selected"
-		>
-			Select the dependent's employee
-		</option>
+		<FormOption 
+			value="Select the dependent's employee" 
+			displayText="Select the dependent's employee"
+			disabled="disabled"
+		/>
 	);
 
 	return (
@@ -26,6 +24,7 @@ const FormSelect = (props) => {
 			name={props.name}
 			//placeholder={props.placeholder}
 			data-parameter={props.parameter}
+			value={options.filter(option => option.value === "Select the dependent's employee")}
 		>
 			{ options }
 		</select>

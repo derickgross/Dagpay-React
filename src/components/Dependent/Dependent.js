@@ -5,7 +5,7 @@ const Dependent = (props) => {
 		<li 
 			key={props.employeeid}
 			id={`employee-${props.employeeid}`}
-			className="employee"
+			className="dependent"
 			tabIndex="0"
 		>
 			{`* ${props.firstName} ${props.lastName}: `}
