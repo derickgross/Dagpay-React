@@ -1,0 +1,11 @@
+.employee > ul {
+	display: none;
+}
+
+.employee > ul.display {
+	display: block;
+}
+
+.money {
+	color: #236323;
+}
