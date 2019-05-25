@@ -18,10 +18,16 @@ class App extends React.Component {
 			currentView: "Beneficiaries",
 			employees: [],
 			employeeForm: {
-
+				employeeIdInput: "",
+				firstNameInput: "",
+				lastNameInput: "",
+				departmentInput: "",
+				experienceInput: 0
 			},
 			dependentForm: {
-				employeeId: "Select the dependent's employee"
+				employeeIdInput: "Select the dependent's employee",
+				firstNameInput: "",
+				lastNameInput: ""
 			},
 			employeeFormInputs: []
 		}
@@ -58,8 +64,12 @@ class App extends React.Component {
 	}
 
 	async setFormInputInState(formType, inputKey, inputValue) {
+		console.log(`setFormInputInState is running: formType = ${formType}, inputKey = ${inputKey}, inputValue = ${inputValue}`)
 		const newState = {};
-		newState[inputKey] = inputValue;
+		const inputInfo = {}
+
+		inputInfo[inputKey] = inputValue
+		newState[formType] = inputInfo;
 
 		await this.setState(newState);
 	}
@@ -119,7 +129,10 @@ class App extends React.Component {
 	displayCurrentView() {
 		switch (this.state.currentView) {
 			case "BeneficiariesIndex":
-				return <BeneficiariesIndex employees={this.state.employees} displayDependentsListener={this.displayDependents}/>
+				return <BeneficiariesIndex 
+							employees={this.state.employees} 
+							displayDependentsListener={this.displayDependents}
+						/>
 			case "CreateEmployee":
 				return <CreateEmployee 
 							onFormElementChange={this.onFormElementChange} 
@@ -133,7 +146,10 @@ class App extends React.Component {
 							setFormInputInState={this.setFormInputInState}
 						/>
 			default:
-				return <BeneficiariesIndex employees={this.state.employees} displayDependentsListener={this.displayDependents}/>
+				return <BeneficiariesIndex 
+							employees={this.state.employees} 
+							displayDependentsListener={this.displayDependents}
+						/>
 		}
 	}
 

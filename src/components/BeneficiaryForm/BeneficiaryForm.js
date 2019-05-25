@@ -5,6 +5,8 @@ const BeneficiaryForm = (props) => {
 	console.log(`BeneficiaryForm onChange function: ${props.onFormElementChange}`)
 	let inputValue;
 
+	// console.log(`Value of props.setFormInputInState in BeneficiaryForm: ${props.setFormInputInState}`)
+
 	const inputs = props.inputs.map(input => {
 		//inputValue = props.formValues[input.id]
 
@@ -15,7 +17,8 @@ const BeneficiaryForm = (props) => {
 				onChange={props.onFormElementChange} 
 				options={input.elementType === "select" ? props.options : "none" }
 				value={inputValue}
-				setFormInputsInState={props.setFormInputsInState}
+				setFormInputInState={props.setFormInputInState}
+				formType={props.formType}
 			/>
 		)
 	})

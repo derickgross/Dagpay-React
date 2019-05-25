@@ -4,9 +4,7 @@ import FormSelect from '../FormSelect/FormSelect'
 
 const FormElement = (props) => {
 	const processInput = () => {
-		// add input info to app state, then determine which element to render
-		
-		
+
 		switch (props.input.elementType) {
 			case "input":
 				return (
