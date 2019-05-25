@@ -18,7 +18,6 @@ const FormElement = (props) => {
 						value={props.value}
 					/>
 				)
-				break;
 			case "select":
 				return (
 					<FormSelect 
@@ -29,7 +28,6 @@ const FormElement = (props) => {
 						value={props.value}
 					/>
 				)
-				break;
 			default:
 				return (
 					/*<input 

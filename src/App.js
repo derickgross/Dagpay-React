@@ -86,7 +86,7 @@ class App extends React.Component {
 	}
 
 	displayDependents(event) {
-		if (!!event.key && event.key != "Enter") {
+		if (!!event.key && event.key !== "Enter") {
 			return;
 		}
 
