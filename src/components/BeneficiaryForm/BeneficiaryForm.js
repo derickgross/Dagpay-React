@@ -17,7 +17,7 @@ const BeneficiaryForm = (props) => {
 				options={input.elementType === "select" ? props.options : "none" }
 				value={inputValue}
 				setFormInputInState={props.setFormInputInState}
-				formType={props.formType}
+				formType={input.formType}
 			/>
 		)
 	})

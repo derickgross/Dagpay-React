@@ -11,7 +11,6 @@ const CreateEmployee = (props) => {
 				onChange={props.onFormElementChange} 
 				onSubmit={props.handleEmployeeFormSubmit} 
 				inputs={formInputs}
-				formType="employeeForm"
 			/>
 		</section>
 	)

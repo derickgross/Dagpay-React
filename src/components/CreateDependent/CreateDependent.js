@@ -12,7 +12,6 @@ const CreateDependent = (props) => {
 				inputs={formInputs} 
 				options={props.employeeSelectOptions}
 				formValues={props.formValues}
-				formType="dependentForm"
 				setFormInputInState={props.setFormInputInState}
 			/>
 		</div>
