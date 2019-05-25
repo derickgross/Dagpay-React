@@ -34,24 +34,11 @@ class App extends React.Component {
 		this.addDependent = this.addDependent.bind(this);
 		this.displayDependents = this.displayDependents.bind(this);
 		this.onFormElementChange = this.onFormElementChange.bind(this);
-		this.setFormInputs = this.setFormInputs.bind(this);
+		this.setFormInput = this.setFormInput.bind(this);
 	}
 
 	componentDidMount() {
 		this.fetchEmployeesAndDependents();
-
-		// this.setEmployeeFormInputs()
-		// console.log(`inputs from state: ${this.state.employeeFormInputs}`)
-		// console.log(`employees from state: ${this.state.employees}`)
-		// for (ninja of this.state.employeeFormInputs) {
-		// 	employeeForm[ninja.id] = ninja.defaultValue
-		// }
-
-		// const employeeForm = {}
-		
-
-		// const dependentForm = {}
-		// for (element)
 	}
 
 	fetchEmployeesAndDependents() {
