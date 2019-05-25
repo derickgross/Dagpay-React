@@ -5,11 +5,12 @@ const FormInput = (props) => {
 		<input 
 			type={props.type}
 			id={props.id}
-			onChange={props.onChange}
+			onChange={props.onFormElementChange}
 			className="formInput"
 			name={props.name}
 			placeholder={props.placeholder}
 			data-parameter={props.parameter}
+			data-form-type={props.formType}
 		/>
 	)
 }

@@ -65,11 +65,9 @@ class App extends React.Component {
 
 	async setFormInputInState(formType, inputKey, inputValue) {
 		console.log(`setFormInputInState is running: formType = ${formType}, inputKey = ${inputKey}, inputValue = ${inputValue}`)
-		const newState = {};
-		const inputInfo = {}
+		const newState = this.state;
 
-		inputInfo[inputKey] = inputValue
-		newState[formType] = inputInfo;
+		newState[formType][inputKey] = inputValue;
 
 		await this.setState(newState);
 	}
@@ -107,7 +105,16 @@ class App extends React.Component {
 	}
 
 	onFormElementChange(event) {
+		const formType = event.target.dataset.formType;
+		const inputKey = event.target.id;
+		const inputValue = event.target.value;
+
 		console.log(`One of the form elements changed: ${event.target.id}`)
+		console.log(`event target formType: ${event.target.dataset.formType}`)
+		console.log(`event target inputKey (id): ${event.target.id}`)
+		console.log(`event target inputValue (value): ${event.target.value}`)
+
+		this.setFormInputInState(formType, inputKey, inputValue)
 	}
 
 	handleClick(event) {

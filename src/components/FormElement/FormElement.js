@@ -19,16 +19,20 @@ const FormElement = (props) => {
 						placeholder={props.input.placeholder}
 						data-parameter={props.input.parameter}
 						value={props.value}
+						formType={props.input.formType}
 					/>
 				)
 			case "select":
 				return (
 					<FormSelect 
 						onFormElementChange={props.onFormElementChange}
+						id={props.input.id}
+						className="form-select"
 						name={props.input.name}
-						data-parameter={props.input.parameter}
+						parameter={props.input.parameter}
 						options={props.options}
 						value={props.value}
+						formType={props.input.formType}
 					/>
 				)
 			default:

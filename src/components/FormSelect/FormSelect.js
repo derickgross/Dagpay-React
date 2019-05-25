@@ -23,11 +23,12 @@ const FormSelect = (props) => {
 	return (
 		<select 
 			//type={props.type}
-			//id={props.id}
+			id={props.id}
 			onChange={props.onFormElementChange}
 			//className="formInput"
 			name={props.name}
 			//placeholder={props.placeholder}
+			data-form-type={props.formType}
 			data-parameter={props.parameter}
 			defaultValue={options.find(option => option.value === "Select the dependent's employee")}
 		>
