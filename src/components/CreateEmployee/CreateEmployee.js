@@ -3,6 +3,8 @@ import BeneficiaryForm from '../BeneficiaryForm/BeneficiaryForm'
 import { employeeFormInputs as formInputs } from '../../formInputs'
 
 const CreateEmployee = (props) => {
+	// props.setEmployeeFormInputs(formInputs);
+
 	return (
 		<section>
 			<h2>Add Employee view</h2>

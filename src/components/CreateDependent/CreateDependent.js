@@ -3,6 +3,8 @@ import BeneficiaryForm from '../BeneficiaryForm/BeneficiaryForm'
 import { dependentFormInputs as formInputs } from '../../formInputs'
 
 const CreateDependent = (props) => {
+	// props.setEmployeeFormInputs(formInputs);
+
 	return (
 		<div>
 			<h2>Create Dependent view</h2>

@@ -3,12 +3,17 @@ import FormOption from '../FormOption/FormOption'
 
 const FormSelect = (props) => {
 	const options = props.options.map(option => {
-		return <FormOption value={option.employeeid} displayText={`${option.lastname}, ${option.firstname}`}/>
+		return <FormOption 
+					key={option.employeeid}
+					value={option.employeeid} 
+					displayText={`${option.lastname}, ${option.firstname}`}
+				/>
 	})
 
 	options.unshift(
 		// replace static options text with a dynamic message from props
-		<FormOption 
+		<FormOption
+			key="defaultValue" 
 			value="Select the dependent's employee" 
 			displayText="Select the dependent's employee"
 			disabled="disabled"
@@ -24,7 +29,7 @@ const FormSelect = (props) => {
 			name={props.name}
 			//placeholder={props.placeholder}
 			data-parameter={props.parameter}
-			value={options.filter(option => option.value === "Select the dependent's employee")}
+			defaultValue={options.find(option => option.value === "Select the dependent's employee")}
 		>
 			{ options }
 		</select>

@@ -6,7 +6,7 @@ const BeneficiaryForm = (props) => {
 	let inputValue;
 
 	const inputs = props.inputs.map(input => {
-		inputValue = props.formValues[input.id]
+		//inputValue = props.formValues[input.id]
 
 		return (
 			<FormElement 

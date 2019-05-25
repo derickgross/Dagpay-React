@@ -6,10 +6,9 @@ import Main from './components/Main/Main'
 import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesIndex'
 import CreateEmployee from './components/CreateEmployee/CreateEmployee'
 import CreateDependent from './components/CreateDependent/CreateDependent'
-import { employeeFormInputs, dependentFormInputs } from './formInputs' 
+// import { employeeFormInputs, dependentFormInputs } from './formInputs' 
 
 const baseURL = 'https://dagpay2.azurewebsites.net/api';
-console.log(employeeFormInputs);
 
 class App extends React.Component {
 	constructor(props) {
@@ -35,7 +34,7 @@ class App extends React.Component {
 		this.addDependent = this.addDependent.bind(this);
 		this.displayDependents = this.displayDependents.bind(this);
 		this.onFormElementChange = this.onFormElementChange.bind(this);
-		this.setEmployeeFormInputs = this.setEmployeeFormInputs.bind(this);
+		this.setFormInputs = this.setFormInputs.bind(this);
 	}
 
 	componentDidMount() {
@@ -71,10 +70,11 @@ class App extends React.Component {
 		.catch(error => console.log('Something went wrong: ', error));
 	}
 
-	async setEmployeeFormInputs() {
-		await this.setState({
-			employeeFormInputs
-		})
+	async setFormInput(formType, inputKey, inputValue) {
+		const newState = {};
+		newState[inputKey] = inputValue;
+
+		await this.setState(newState);
 	}
 
 	addEmployee() {
@@ -134,12 +134,16 @@ class App extends React.Component {
 			case "BeneficiariesIndex":
 				return <BeneficiariesIndex employees={this.state.employees} displayDependentsListener={this.displayDependents}/>
 			case "CreateEmployee":
-				return <CreateEmployee onFormElementChange={this.onFormElementChange} />
+				return <CreateEmployee 
+							onFormElementChange={this.onFormElementChange} 
+							setEmployeeFormInputs={this.setEmployeeFormInputs}
+						/>
 			case "CreateDependent":
 				return <CreateDependent 
 							employeeSelectOptions={this.state.employees} 
 							onFormElementChange={this.onFormElementChange}
 							formValues={this.state.dependentForm}
+							setDependentFormInputs={this.setDependentFormInputs}
 						/>
 			default:
 				return <BeneficiariesIndex employees={this.state.employees} displayDependentsListener={this.displayDependents}/>
