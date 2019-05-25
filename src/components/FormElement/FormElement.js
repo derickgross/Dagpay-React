@@ -3,6 +3,8 @@ import FormInput from '../FormInput/FormInput'
 import FormSelect from '../FormSelect/FormSelect'
 
 const FormElement = (props) => {
+	console.log(`FormElement props.onFormElementChange: ${props.onFormElementChange}`)
+
 	const processInput = () => {
 
 		switch (props.input.elementType) {
@@ -11,7 +13,7 @@ const FormElement = (props) => {
 					<FormInput 
 						type={props.input.type}
 						id={props.input.id}
-						onChange={props.onChange}
+						onFormElementChange={props.onFormElementChange}
 						className="form-input"
 						name={props.input.name}
 						placeholder={props.input.placeholder}
@@ -22,7 +24,7 @@ const FormElement = (props) => {
 			case "select":
 				return (
 					<FormSelect 
-						onChange={props.input.onChange}
+						onFormElementChange={props.onFormElementChange}
 						name={props.input.name}
 						data-parameter={props.input.parameter}
 						options={props.options}

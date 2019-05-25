@@ -24,7 +24,7 @@ const FormSelect = (props) => {
 		<select 
 			//type={props.type}
 			//id={props.id}
-			onChange={props.onChange}
+			onChange={props.onFormElementChange}
 			//className="formInput"
 			name={props.name}
 			//placeholder={props.placeholder}
