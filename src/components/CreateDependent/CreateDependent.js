@@ -3,7 +3,6 @@ import BeneficiaryForm from '../BeneficiaryForm/BeneficiaryForm'
 import { dependentFormInputs as formInputs } from '../../formInputs'
 
 const CreateDependent = (props) => {
-	// props.setEmployeeFormInputs(formInputs);
 
 	return (
 		<div>
@@ -14,6 +13,8 @@ const CreateDependent = (props) => {
 				inputs={formInputs} 
 				options={props.employeeSelectOptions}
 				formValues={props.formValues}
+				formType="dependentForm"
+				setFormInputsInState={props.setFormInputsInState}
 			/>
 		</div>
 	)

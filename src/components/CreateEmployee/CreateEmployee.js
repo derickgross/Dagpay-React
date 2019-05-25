@@ -3,7 +3,6 @@ import BeneficiaryForm from '../BeneficiaryForm/BeneficiaryForm'
 import { employeeFormInputs as formInputs } from '../../formInputs'
 
 const CreateEmployee = (props) => {
-	// props.setEmployeeFormInputs(formInputs);
 
 	return (
 		<section>
@@ -11,7 +10,8 @@ const CreateEmployee = (props) => {
 			<BeneficiaryForm 
 				onChange={props.onFormElementChange} 
 				onSubmit={props.handleEmployeeFormSubmit} 
-				inputs={formInputs} 
+				inputs={formInputs}
+				formType="employeeForm"
 			/>
 		</section>
 	)

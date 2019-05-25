@@ -10,10 +10,12 @@ const BeneficiaryForm = (props) => {
 
 		return (
 			<FormElement 
+				key={input.id}
 				input={input} 
 				onChange={props.onFormElementChange} 
 				options={input.elementType === "select" ? props.options : "none" }
 				value={inputValue}
+				setFormInputsInState={props.setFormInputsInState}
 			/>
 		)
 	})

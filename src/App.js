@@ -34,7 +34,7 @@ class App extends React.Component {
 		this.addDependent = this.addDependent.bind(this);
 		this.displayDependents = this.displayDependents.bind(this);
 		this.onFormElementChange = this.onFormElementChange.bind(this);
-		this.setFormInput = this.setFormInput.bind(this);
+		this.setFormInputInState = this.setFormInputInState.bind(this);
 	}
 
 	componentDidMount() {
@@ -57,7 +57,7 @@ class App extends React.Component {
 		.catch(error => console.log('Something went wrong: ', error));
 	}
 
-	async setFormInput(formType, inputKey, inputValue) {
+	async setFormInputInState(formType, inputKey, inputValue) {
 		const newState = {};
 		newState[inputKey] = inputValue;
 
@@ -123,14 +123,14 @@ class App extends React.Component {
 			case "CreateEmployee":
 				return <CreateEmployee 
 							onFormElementChange={this.onFormElementChange} 
-							setEmployeeFormInputs={this.setEmployeeFormInputs}
+							setFormInputInState={this.setFormInputInState}
 						/>
 			case "CreateDependent":
 				return <CreateDependent 
 							employeeSelectOptions={this.state.employees} 
 							onFormElementChange={this.onFormElementChange}
 							formValues={this.state.dependentForm}
-							setDependentFormInputs={this.setDependentFormInputs}
+							setFormInputInState={this.setFormInputInState}
 						/>
 			default:
 				return <BeneficiariesIndex employees={this.state.employees} displayDependentsListener={this.displayDependents}/>
