@@ -8,8 +8,8 @@ const CreateEmployee = (props) => {
 		<section>
 			<h2>Add Employee view</h2>
 			<BeneficiaryForm 
-				onChange={props.onFormElementChange} 
-				onSubmit={props.handleEmployeeFormSubmit} 
+				onFormElementChange={props.onFormElementChange} 
+				onFormSubmit={props.onFormSubmit} 
 				inputs={formInputs}
 			/>
 		</section>

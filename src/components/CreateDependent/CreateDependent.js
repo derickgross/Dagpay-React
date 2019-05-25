@@ -8,7 +8,7 @@ const CreateDependent = (props) => {
 			<h2>Create Dependent view</h2>
 			<BeneficiaryForm 
 				onFormElementChange={props.onFormElementChange} 
-				onSubmit={props.handleEmployeeFormSubmit} 
+				onFormSubmit={props.onFormSubmit}
 				inputs={formInputs} 
 				options={props.employeeSelectOptions}
 				formValues={props.formValues}

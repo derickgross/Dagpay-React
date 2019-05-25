@@ -18,6 +18,7 @@ class App extends React.Component {
 			currentView: "Beneficiaries",
 			employees: [],
 			employeeForm: {
+				endpoint: "AddEmployee",
 				employeeIdInput: "",
 				firstNameInput: "",
 				lastNameInput: "",
@@ -25,6 +26,7 @@ class App extends React.Component {
 				experienceInput: 0
 			},
 			dependentForm: {
+				endpoint: "AddDependent",
 				employeeIdInput: "Select the dependent's employee",
 				firstNameInput: "",
 				lastNameInput: ""
@@ -36,11 +38,12 @@ class App extends React.Component {
 		this.setCurrentView = this.setCurrentView.bind(this);
 		this.displayCurrentView = this.displayCurrentView.bind(this);
 		this.fetchEmployeesAndDependents = this.fetchEmployeesAndDependents.bind(this);
-		this.addEmployee = this.addEmployee.bind(this);
-		this.addDependent = this.addDependent.bind(this);
+		// this.addEmployee = this.addEmployee.bind(this);
+		// this.addDependent = this.addDependent.bind(this);
 		this.displayDependents = this.displayDependents.bind(this);
 		this.onFormElementChange = this.onFormElementChange.bind(this);
 		this.setFormInputInState = this.setFormInputInState.bind(this);
+		this.onFormSubmit = this.onFormSubmit.bind(this);
 	}
 
 	componentDidMount() {
@@ -72,26 +75,26 @@ class App extends React.Component {
 		await this.setState(newState);
 	}
 
-	addEmployee() {
-		// const employee = {
-		//   employeeid: document.getElementById('employeeId').value,
-		//   firstname: document.getElementById('employeeFirstname').value,
-		//   lastname: document.getElementById('employeeLastname').value,
-		//   department: document.getElementById('employeeDepartment').value,
-		//   experience: document.getElementById('employeeExperience').value
-		// }
+	// addEmployee() {
+	// 	// const employee = {
+	// 	//   employeeid: document.getElementById('employeeId').value,
+	// 	//   firstname: document.getElementById('employeeFirstname').value,
+	// 	//   lastname: document.getElementById('employeeLastname').value,
+	// 	//   department: document.getElementById('employeeDepartment').value,
+	// 	//   experience: document.getElementById('employeeExperience').value
+	// 	// }
 
-		// const body = `employeeid=${employee.employeeid}&firstname=${employee.firstname}&lastname=${employee.lastname}&department=${employee.department}&experience=${employee.experience}`;
+	// 	// const body = `employeeid=${employee.employeeid}&firstname=${employee.firstname}&lastname=${employee.lastname}&department=${employee.department}&experience=${employee.experience}`;
 
-		fetch(`${baseURL}/AddEmployee`, {
-			method: 'POST',
-			data: {}
-		})
-	}
+	// 	fetch(`${baseURL}/AddEmployee`, {
+	// 		method: 'POST',
+	// 		data: {}
+	// 	})
+	// }
 
-	addDependent() {
+	// addDependent() {
 
-	}
+	// }
 
 	displayDependents(event) {
 		if (!!event.key && event.key !== "Enter") {
@@ -109,12 +112,18 @@ class App extends React.Component {
 		const inputKey = event.target.id;
 		const inputValue = event.target.value;
 
-		console.log(`One of the form elements changed: ${event.target.id}`)
-		console.log(`event target formType: ${event.target.dataset.formType}`)
-		console.log(`event target inputKey (id): ${event.target.id}`)
-		console.log(`event target inputValue (value): ${event.target.value}`)
+		console.log(`One of the form elements changed: ${event.target.id}`);
+		console.log(`event target formType: ${event.target.dataset.formType}`);
+		console.log(`event target inputKey (id): ${event.target.id}`);
+		console.log(`event target inputValue (value): ${event.target.value}`);
 
-		this.setFormInputInState(formType, inputKey, inputValue)
+		this.setFormInputInState(formType, inputKey, inputValue);
+	}
+
+	onFormSubmit(event) {
+		console.log(`Form submit triggered.` + event.target);
+
+		event.preventDefault();
 	}
 
 	handleClick(event) {
@@ -144,6 +153,7 @@ class App extends React.Component {
 				return <CreateEmployee 
 							onFormElementChange={this.onFormElementChange} 
 							setFormInputInState={this.setFormInputInState}
+							onFormSubmit={this.onFormSubmit}
 						/>
 			case "CreateDependent":
 				return <CreateDependent 
@@ -151,6 +161,7 @@ class App extends React.Component {
 							onFormElementChange={this.onFormElementChange}
 							formValues={this.state.dependentForm}
 							setFormInputInState={this.setFormInputInState}
+							onFormSubmit={this.onFormSubmit}
 						/>
 			default:
 				return <BeneficiariesIndex 
