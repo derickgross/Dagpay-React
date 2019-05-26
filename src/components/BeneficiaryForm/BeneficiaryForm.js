@@ -5,14 +5,14 @@ const BeneficiaryForm = (props) => {
 	let inputValue;
 
 	const inputs = props.inputs.map(input => {
-
+		//console.log(`Input value: ${props.formValues[input.id]}`)
 		return (
 			<FormElement 
 				key={input.id}
 				input={input} 
 				onFormElementChange={props.onFormElementChange} 
 				options={input.elementType === "select" ? props.options : "none" }
-				value={inputValue}
+				value={props.formValues[input.id]}
 				setFormInputInState={props.setFormInputInState}
 				formType={input.formType}
 			/>

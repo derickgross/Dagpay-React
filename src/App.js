@@ -108,13 +108,14 @@ class App extends React.Component {
 		return (!!input.value && (!input.dataset.validation || String(input.value).match(input.dataset.validation)))
 	}
 
-	onSuccessfulFormSubmit() {
+	onSuccessfulFormSubmit(event) {
 		document.querySelector(`p.success`).classList.remove('inactive');
-		//this.resetFormValues()
+		this.resetFormValues(event.target.dataset.form)
 	}
 
 	onFormSubmit(event) {
 		event.preventDefault();
+		event.persist();
 		console.log(`Form submit triggered.` + event.target);
 
 		const form = event.target.dataset.form;
@@ -138,7 +139,7 @@ class App extends React.Component {
 		)
 		.then(response => {
 		  if (response.status === 200) {
-		  	this.onSuccessfulFormSubmit();
+		  	this.onSuccessfulFormSubmit(event);
 		  	this.fetchEmployeesAndDependents();
 		  	// display success message
 		  } else {
@@ -148,6 +149,40 @@ class App extends React.Component {
 		.catch(function(error) {
 		  console.log(`Something went wrong while submitting ${form}: ${error}`)
 		});
+	}
+
+	async resetFormValues(formType) {
+		debugger;
+		const newState = this.state;
+
+		const newFormState = () => {
+			switch (formType) {
+				case "employeeForm":
+					return {
+						endpoint: "AddEmployee",
+						employeeIdInput: "",
+						firstNameInput: "",
+						lastNameInput: "",
+						departmentInput: "",
+						experienceInput: 0
+					}
+					break;
+				case "dependentForm":
+					return {
+						endpoint: "AddDependent",
+						employeeIdInput: "Select the dependent's employee",
+						firstNameInput: "",
+						lastNameInput: ""
+					}
+					break;
+				default:
+					break;
+			}
+		}
+
+		newState[formType] = newFormState();
+
+		await this.setState(newState);
 	}
 
 	handleClick(event) {
@@ -178,6 +213,7 @@ class App extends React.Component {
 							onFormElementChange={this.onFormElementChange} 
 							setFormInputInState={this.setFormInputInState}
 							onFormSubmit={this.onFormSubmit}
+							formValues={this.state.employeeForm}
 						/>
 			case "CreateDependent":
 				return <CreateDependent 

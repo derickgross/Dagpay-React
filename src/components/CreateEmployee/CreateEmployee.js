@@ -10,6 +10,8 @@ const CreateEmployee = (props) => {
 				onFormElementChange={props.onFormElementChange} 
 				onFormSubmit={props.onFormSubmit} 
 				inputs={formInputs}
+				formValues={props.formValues}
+				setFormInputInState={props.setFormInputInState}
 			/>
 		</section>
 	)

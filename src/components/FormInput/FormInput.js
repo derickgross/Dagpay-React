@@ -12,6 +12,7 @@ const FormInput = (props) => {
 			data-parameter={props.parameter}
 			data-form-type={props.formType}
 			data-validation={props.validation}
+			value={props.value}
 		/>
 	)
 }
