@@ -4,10 +4,7 @@ import FormElement from '../FormElement/FormElement'
 const BeneficiaryForm = (props) => {
 	let inputValue;
 
-	// console.log(`Value of props.setFormInputInState in BeneficiaryForm: ${props.setFormInputInState}`)
-
 	const inputs = props.inputs.map(input => {
-		//inputValue = props.formValues[input.id]
 
 		return (
 			<FormElement 

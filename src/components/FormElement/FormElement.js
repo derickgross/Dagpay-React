@@ -35,15 +35,6 @@ const FormElement = (props) => {
 				)
 			default:
 				return (
-					/*<input 
-						type={props.input.type}
-						id={props.input.id}
-						onChange={props.input.onChange}
-						className="formInput"
-						name={props.input.name}
-						placeholder={props.input.placeholder}
-						data-parameter={props.input.parameter}
-					/>*/
 					"default case ran"
 				)				
 		}

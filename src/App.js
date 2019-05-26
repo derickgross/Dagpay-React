@@ -6,7 +6,6 @@ import Main from './components/Main/Main'
 import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesIndex'
 import CreateEmployee from './components/CreateEmployee/CreateEmployee'
 import CreateDependent from './components/CreateDependent/CreateDependent'
-// import { employeeFormInputs, dependentFormInputs } from './formInputs' 
 
 const baseURL = 'https://dagpay2.azurewebsites.net/api';
 
