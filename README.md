@@ -4,9 +4,9 @@ Welcome to Dagpay, a custom app that allows users to track payroll benefits dedu
 
 ## Dagpay front-end client
 
-The Dagpay React will be hosted in the cloud, likely using Surge:
+Dagpay React is live on Heroku:
 
-(link to deployed app coming soon)
+http://dagpay.herokuapp.com/
 
 The client has four sections:
 

@@ -139,6 +139,7 @@ select, input {
     padding: 0 10px;
     width: 35%;
     min-width: 280px;
+    max-width: 70%;
     margin-bottom: 8px;
 }
 
