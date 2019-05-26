@@ -109,8 +109,10 @@ class App extends React.Component {
 	}
 
 	onSuccessfulFormSubmit(event) {
+		const form = event.target.dataset.form;
 		document.querySelector(`p.success`).classList.remove('inactive');
-		this.resetFormValues(event.target.dataset.form)
+		document.querySelector(`p.success`).innerHTML= `${this.state[form].firstNameInput} ${this.state[form].lastNameInput} was successfully added.`
+		this.resetFormValues(form)
 	}
 
 	onFormSubmit(event) {
@@ -152,7 +154,6 @@ class App extends React.Component {
 	}
 
 	async resetFormValues(formType) {
-		debugger;
 		const newState = this.state;
 
 		const newFormState = () => {

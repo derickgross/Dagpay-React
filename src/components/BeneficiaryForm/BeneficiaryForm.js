@@ -2,10 +2,7 @@ import React from 'react'
 import FormElement from '../FormElement/FormElement'
 
 const BeneficiaryForm = (props) => {
-	let inputValue;
-
 	const inputs = props.inputs.map(input => {
-		//console.log(`Input value: ${props.formValues[input.id]}`)
 		return (
 			<FormElement 
 				key={input.id}
@@ -21,7 +18,7 @@ const BeneficiaryForm = (props) => {
 
 	return (
 		<form action="" id={props.inputs[0].formType}>
-			<p className="success inactive money">{`${!!document.getElementById('firstNameInput') ? document.getElementById('firstNameInput').value : ""} ${!!document.getElementById('lastNameInput') ? document.getElementById('lastNameInput').value : ""} was successfully added.`}</p>
+			<p className="success inactive money"></p>
 			{inputs}
 			<button onClick={props.onFormSubmit} className="submitButton" data-form={props.inputs[0].formType} data-endpoint={props.inputs[0].endpoint}>Submit</button>
 		</form>
