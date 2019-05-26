@@ -50,6 +50,7 @@ class App extends React.Component {
 	}
 
 	supportTabNavigator(event) {
+		// add focus ring style to support page navigation via tab
 	  if (event.key === 'Tab') {
 	    document.body.classList.add('tab-navigator');
 	  }
