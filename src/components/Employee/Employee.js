@@ -7,11 +7,12 @@ const Employee = (props) => {
 
 	const dependents = props.dependents.map(dependent => {
 		dependentsDeductions += Number.parseFloat(dependent.deduction.toFixed(2));
+		console.log(`Employee ID for dependent: ${props.employeeId}, ${props}`)
 		
 		return (
 			<Dependent
 				key={`${dependent.firstname}-${dependent.lastname}`}
-				employeeId={props.employeeid}
+				employeeId={props.employeeId}
 				firstName={dependent.firstname}
 				lastName={dependent.lastname}
 				deduction={dependent.deduction}
