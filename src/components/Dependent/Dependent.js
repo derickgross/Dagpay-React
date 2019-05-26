@@ -8,7 +8,7 @@ const Dependent = (props) => {
 			className="dependent"
 			tabIndex="0"
 		>
-			{`* ${props.firstName} ${props.lastName}: `}
+			{`${props.firstName} ${props.lastName}: `}
 			<span className="money">{`$${props.deduction}`}</span>
 		</li>
 	)

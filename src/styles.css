@@ -91,13 +91,21 @@ h1 {
     border-bottom: 1px solid #c4122f;
 }
 
-li.employee {
+li.employee, li.dependent {
     list-style: none;
 }
 
 li.employee::before {
     content: "\2022";
     color: #c4122f;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-weight: bold;
+}
+li.dependent::before {
+    content: "\2022";
+    color: #f18815;
     display: inline-block;
     width: 1em;
     margin-left: -1em;
