@@ -29,10 +29,10 @@ a {
     text-decoration: none;
 }
 
-    a:hover, a:focus {
-        color: #3397db;
-        text-decoration: none;
-    }
+a:hover, a:focus {
+    color: #3397db;
+    text-decoration: none;
+}
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Arial, Helvetica, sans-serif;
@@ -48,6 +48,18 @@ header, footer {
     background-color: #252831;
     box-sizing: border-box;
     max-width: 100%;
+}
+header li {
+    list-style: none;
+    display: inline-block;
+}
+
+header ul {
+    padding: 0 0 16px 0;
+}
+
+.header-link + .header-link {
+    margin-left: 2%;
 }
 
 #maincontent {
@@ -83,14 +95,18 @@ li.employee {
     list-style: none;
 }
 
-    li.employee::before {
-        content: "\2022";
-        color: #c4122f;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
-        font-weight: bold;
-    }
+li.employee::before {
+    content: "\2022";
+    color: #c4122f;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    font-weight: bold;
+}
+
+.dependents-hidden {
+    display: none;
+}
 
 select, input {
     display: block;

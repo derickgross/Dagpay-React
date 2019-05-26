@@ -79,7 +79,7 @@ class App extends React.Component {
 
 		if (event.target.classList.contains("employee") || event.target.parentElement.classList.contains('employee')) {
 			const dependentsList = event.target.closest('li.employee').querySelector('ul');
-			dependentsList.classList.contains("display") ? dependentsList.classList.remove("display") : dependentsList.classList.add("display"); // toggle display class, which will show or hide ul
+			dependentsList.classList.contains("dependents-hidden") ? dependentsList.classList.remove("dependents-hidden") : dependentsList.classList.add("dependents-hidden"); // toggle dependents-hidden class, which will show or hide ul
 		}
 	}
 

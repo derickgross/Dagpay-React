@@ -16,12 +16,12 @@ const BeneficiariesIndex = (props) => {
 	});
 
 	return (
-		<div>
+		<section>
 			<h2>Beneficiaries</h2>
 			<ul onClick={props.displayDependentsListener} onKeyDown={props.displayDependentsListener}>
 				{employees}
 			</ul>
-		</div>
+		</section>
 	)
 }
 
