@@ -3,7 +3,10 @@ import React from 'react'
 const Main = (props) => {
 	return (
 		<div>
-			<h2>Main Content</h2>
+			<section>
+				<h2>Total Deductions</h2>
+				<p className="money">${props.totalDeductions}</p>
+			</section>
 			{props.currentView()}
 		</div>
 	)

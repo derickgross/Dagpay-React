@@ -41,6 +41,7 @@ class App extends React.Component {
 		this.onFormElementChange = this.onFormElementChange.bind(this);
 		this.setFormInputInState = this.setFormInputInState.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
+		this.calculateTotalDeductions = this.calculateTotalDeductions.bind(this);
 	}
 
 	componentDidMount() {
@@ -112,6 +113,7 @@ class App extends React.Component {
 		)
 		.then(response => {
 		  if (response.status === 200) {
+		  	this.fetchEmployeesAndDependents();
 		  	// display success message
 		  } else {
 		    // display failure message
@@ -167,15 +169,36 @@ class App extends React.Component {
 		}
 	}
 
+	calculateTotalDeductions() {
+		// calculate deductions attributable to each employee, including dependents for each
+		const employeeDeductions = this.state.employees.map(employee => {
+			let dependentsDeductions = 0;
+
+			if (!!employee.dependents) {
+				employee.dependents.map(dependent => {
+					dependentsDeductions += dependent.deduction;
+				})
+			}
+
+			return employee.deduction + dependentsDeductions;
+		})
+
+		return Number.parseFloat(employeeDeductions.reduce((accumulator, currentDeduction) => {
+			return accumulator + currentDeduction;
+		}, 0)).toFixed(2);
+	}
+
 	render() {
 		const navbarProps = {
 			handleClick: this.handleClick
 		}
 
+		const totalDeductions = this.calculateTotalDeductions();
+
 		return (
 			<div className="App">
 				<Header navbar={navbarProps}/>
-				<Main currentView={this.displayCurrentView}/>
+				<Main currentView={this.displayCurrentView} totalDeductions={totalDeductions}/>
 				<Footer />
 			</div>
 		)
