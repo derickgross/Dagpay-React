@@ -28,7 +28,7 @@ const Employee = (props) => {
 		>
 			{`${props.firstName} ${props.lastName}: `}
 			<span className="money">{`$${props.deduction}`}</span>{dependentsDeductions > 0 ? <span className="money">{` (+$${dependentsDeductions.toFixed(2)})`}</span> : '' }
-			<ul className="dependents-hidden">
+			<ul className="dependents dependents-hidden">
 				{dependents}
 			</ul>
 		</li>

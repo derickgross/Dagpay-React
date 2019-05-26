@@ -91,6 +91,13 @@ h1 {
     border-bottom: 1px solid #c4122f;
 }
 
+section ul {
+    text-align: left;
+}
+section ul.employees {
+    margin-left: 20%;
+}
+
 li.employee, li.dependent {
     list-style: none;
 }
@@ -178,10 +185,10 @@ section {
     outline: none;
 }
 
-body.tabNavigator button:focus,
-body.tabNavigator input:focus,
-body.tabNavigator select:focus,
-body.tabNavigator textarea:focus,
-body.tabNavigator li:focus {
+body.tab-navigator button:focus,
+body.tab-navigator input:focus,
+body.tab-navigator select:focus,
+body.tab-navigator textarea:focus,
+body.tab-navigator li:focus {
     outline: 5px auto -webkit-focus-ring-color;
 }

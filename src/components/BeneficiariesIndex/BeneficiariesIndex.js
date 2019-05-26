@@ -18,7 +18,7 @@ const BeneficiariesIndex = (props) => {
 	return (
 		<section>
 			<h2>Beneficiaries</h2>
-			<ul onClick={props.displayDependentsListener} onKeyDown={props.displayDependentsListener}>
+			<ul className="employees" onClick={props.displayDependentsListener} onKeyDown={props.displayDependentsListener}>
 				{employees}
 			</ul>
 		</section>

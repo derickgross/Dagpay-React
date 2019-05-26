@@ -33,6 +33,7 @@ class App extends React.Component {
 			employeeFormInputs: []
 		}
 
+		this.handleFirstTab = this.handleFirstTab.bind(this);
 		this.handleClick = this.handleClick.bind(this);
 		this.setCurrentView = this.setCurrentView.bind(this);
 		this.displayCurrentView = this.displayCurrentView.bind(this);
@@ -46,6 +47,12 @@ class App extends React.Component {
 
 	componentDidMount() {
 		this.fetchEmployeesAndDependents();
+	}
+
+	handleFirstTab(event) {
+	  if (event.key === 'Tab') {
+	    document.body.classList.add('tab-navigator');
+	  }
 	}
 
 	fetchEmployeesAndDependents() {
@@ -196,7 +203,7 @@ class App extends React.Component {
 		const totalDeductions = this.calculateTotalDeductions();
 
 		return (
-			<div className="App">
+			<div className="App" onKeyDown={this.handleFirstTab}>
 				<Header navbar={navbarProps}/>
 				<Main currentView={this.displayCurrentView} totalDeductions={totalDeductions}/>
 				<Footer />
