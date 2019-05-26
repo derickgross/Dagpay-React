@@ -5,7 +5,7 @@ import { employeeFormInputs as formInputs } from '../../formInputs'
 const CreateEmployee = (props) => {
 	return (
 		<section>
-			<h2>Add Employee view</h2>
+			<h2>Add Employee</h2>
 			<BeneficiaryForm 
 				onFormElementChange={props.onFormElementChange} 
 				onFormSubmit={props.onFormSubmit} 

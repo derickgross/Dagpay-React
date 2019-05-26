@@ -5,7 +5,7 @@ import { dependentFormInputs as formInputs } from '../../formInputs'
 const CreateDependent = (props) => {
 	return (
 		<section>
-			<h2>Create Dependent view</h2>
+			<h2>Add Dependent</h2>
 			<BeneficiaryForm 
 				onFormElementChange={props.onFormElementChange} 
 				onFormSubmit={props.onFormSubmit}
