@@ -14,10 +14,9 @@ const FormElement = (props) => {
 						type={props.input.type}
 						id={props.input.id}
 						onFormElementChange={props.onFormElementChange}
-						className="form-input"
 						name={props.input.name}
 						placeholder={props.input.placeholder}
-						data-parameter={props.input.parameter}
+						parameter={props.input.parameter}
 						value={props.value}
 						formType={props.input.formType}
 					/>
@@ -27,7 +26,6 @@ const FormElement = (props) => {
 					<FormSelect 
 						onFormElementChange={props.onFormElementChange}
 						id={props.input.id}
-						className="form-select"
 						name={props.input.name}
 						parameter={props.input.parameter}
 						options={props.options}

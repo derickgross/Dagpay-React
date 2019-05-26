@@ -38,8 +38,6 @@ class App extends React.Component {
 		this.setCurrentView = this.setCurrentView.bind(this);
 		this.displayCurrentView = this.displayCurrentView.bind(this);
 		this.fetchEmployeesAndDependents = this.fetchEmployeesAndDependents.bind(this);
-		// this.addEmployee = this.addEmployee.bind(this);
-		// this.addDependent = this.addDependent.bind(this);
 		this.displayDependents = this.displayDependents.bind(this);
 		this.onFormElementChange = this.onFormElementChange.bind(this);
 		this.setFormInputInState = this.setFormInputInState.bind(this);
@@ -67,34 +65,12 @@ class App extends React.Component {
 	}
 
 	async setFormInputInState(formType, inputKey, inputValue) {
-		console.log(`setFormInputInState is running: formType = ${formType}, inputKey = ${inputKey}, inputValue = ${inputValue}`)
 		const newState = this.state;
 
 		newState[formType][inputKey] = inputValue;
 
 		await this.setState(newState);
 	}
-
-	// addEmployee() {
-	// 	// const employee = {
-	// 	//   employeeid: document.getElementById('employeeId').value,
-	// 	//   firstname: document.getElementById('employeeFirstname').value,
-	// 	//   lastname: document.getElementById('employeeLastname').value,
-	// 	//   department: document.getElementById('employeeDepartment').value,
-	// 	//   experience: document.getElementById('employeeExperience').value
-	// 	// }
-
-	// 	// const body = `employeeid=${employee.employeeid}&firstname=${employee.firstname}&lastname=${employee.lastname}&department=${employee.department}&experience=${employee.experience}`;
-
-	// 	fetch(`${baseURL}/AddEmployee`, {
-	// 		method: 'POST',
-	// 		data: {}
-	// 	})
-	// }
-
-	// addDependent() {
-
-	// }
 
 	displayDependents(event) {
 		if (!!event.key && event.key !== "Enter") {
@@ -112,18 +88,39 @@ class App extends React.Component {
 		const inputKey = event.target.id;
 		const inputValue = event.target.value;
 
-		console.log(`One of the form elements changed: ${event.target.id}`);
-		console.log(`event target formType: ${event.target.dataset.formType}`);
-		console.log(`event target inputKey (id): ${event.target.id}`);
-		console.log(`event target inputValue (value): ${event.target.value}`);
-
 		this.setFormInputInState(formType, inputKey, inputValue);
 	}
 
 	onFormSubmit(event) {
+		event.preventDefault();
 		console.log(`Form submit triggered.` + event.target);
 
-		event.preventDefault();
+		const form = event.target.dataset.form;
+		let body = "params=";
+		const inputs = document.querySelectorAll(`*[data-form-type=${form}]`);
+
+		for (let input of inputs) {
+			body += `&${input.dataset.parameter}=${this.state[form][input.id]}`;
+		}
+
+		debugger;
+
+		fetch(`${baseURL}/${this.state[form].endpoint}`, 
+			{ method: 'POST', 
+				body: body, 
+				headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+			}
+		)
+		.then(response => {
+		  if (response.status === 200) {
+		  	// display success message
+		  } else {
+		    // display failure message
+		  }
+		})
+		.catch(function(error) {
+		  console.log(`Something went wrong while submitting ${form}: ${error}`)
+		});
 	}
 
 	handleClick(event) {

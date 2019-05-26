@@ -23,9 +23,9 @@ const BeneficiaryForm = (props) => {
 	})
 
 	return (
-		<form action="" data-form-type={inputs[0].formType}>
+		<form action="" id={props.inputs[0].formType}>
 			{inputs}
-			<button onClick={props.onFormSubmit} className="submitButton">Submit</button>
+			<button onClick={props.onFormSubmit} className="submitButton" data-form={props.inputs[0].formType} data-endpoint={props.inputs[0].endpoint}>Submit</button>
 		</form>
 	)
 }
