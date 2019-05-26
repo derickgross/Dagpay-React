@@ -9,7 +9,8 @@ const employeeFormInputs = [
 		errorMessage: "Please enter an integer value for the employee id",
 		elementType: "input",
 		formType: "employeeForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: /[0-9]+/
 	},
 	{
 		name: "First Name",
@@ -21,7 +22,8 @@ const employeeFormInputs = [
 		errorMessage: "Please enter a first name",
 		elementType: "input",
 		formType: "employeeForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: /[a-z]/i
 	},
 	{
 		name: "Last Name",
@@ -33,7 +35,8 @@ const employeeFormInputs = [
 		errorMessage: "Please enter a last name",
 		elementType: "input",
 		formType: "employeeForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: ""
 	},
 	{
 		name: "Department",
@@ -45,7 +48,8 @@ const employeeFormInputs = [
 		errorMessage: "Please enter a department",
 		elementType: "input",
 		formType: "employeeForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: ""
 	},
 	{
 		name: "Experience",
@@ -57,7 +61,8 @@ const employeeFormInputs = [
 		errorMessage: "Please enter an integer value for experience",
 		elementType: "input",
 		formType: "employeeForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: ""
 	}
 ];
 
@@ -94,7 +99,8 @@ const dependentFormInputs = [
 		errorMessage: "Please enter an integer value for the employee id",
 		elementType: "select",
 		formType: "dependentForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: ""
 	},
 	{
 		name: "First Name",
@@ -106,7 +112,8 @@ const dependentFormInputs = [
 		errorMessage: "Please enter a first name",
 		elementType: "input",
 		formType: "dependentForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: ""
 	},
 	{
 		name: "Last Name",
@@ -118,7 +125,8 @@ const dependentFormInputs = [
 		errorMessage: "Please enter a last name",
 		elementType: "input",
 		formType: "dependentForm",
-		defaultValue: ""
+		defaultValue: "",
+		validation: ""
 	}
 ];
 

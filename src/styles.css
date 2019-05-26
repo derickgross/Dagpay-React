@@ -43,6 +43,11 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
     display: block;
 }
 
+form {
+    text-align: left;
+    margin-left: 25%;
+}
+
 header, footer {
     z-index: 2000;
     background-color: #252831;
