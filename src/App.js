@@ -98,7 +98,7 @@ class App extends React.Component {
 		const inputValue = event.target.value;
 
 		this.setFormInputInState(formType, inputKey, inputValue);
-		document.querySelector(`p[data-owner=${event.target.id}`).classList.add('inactive');
+		document.querySelector(`p[data-owner=${event.target.id}]`).classList.add('inactive');
 		document.querySelector(`p.success`).classList.add('inactive');
 	}
 
