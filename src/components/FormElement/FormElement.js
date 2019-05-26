@@ -19,6 +19,7 @@ const FormElement = (props) => {
 						parameter={props.input.parameter}
 						value={props.value}
 						formType={props.input.formType}
+						validation={props.input.validation}
 					/>
 				)
 			case "select":
@@ -31,6 +32,7 @@ const FormElement = (props) => {
 						options={props.options}
 						value={props.value}
 						formType={props.input.formType}
+						validation={props.input.validation}
 					/>
 				)
 			default:
@@ -44,7 +46,7 @@ const FormElement = (props) => {
 		<div>
 			<label htmlFor={props.input.id}>{props.input.name}</label>
 				{ processInput() }	
-			<p className="errorMessage inactive">{props.input.errorMessage}</p>
+			<p className="inactive errorMessage" data-owner={props.input.id}>{props.input.errorMessage}</p>
 		</div>
 	)
 }

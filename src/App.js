@@ -41,6 +41,7 @@ class App extends React.Component {
 		this.displayDependents = this.displayDependents.bind(this);
 		this.onFormElementChange = this.onFormElementChange.bind(this);
 		this.setFormInputInState = this.setFormInputInState.bind(this);
+		this.valdiateFormInputValue = this.valdiateFormInputValue.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 		this.calculateTotalDeductions = this.calculateTotalDeductions.bind(this);
 	}
@@ -97,6 +98,14 @@ class App extends React.Component {
 		const inputValue = event.target.value;
 
 		this.setFormInputInState(formType, inputKey, inputValue);
+		document.querySelector(`p[data-owner=${event.target.id}`).classList.add('inactive');
+	}
+
+	valdiateFormInputValue(input) {
+		// input has a value and (there is no validation expression or value matches validation expression)
+		const match = String(input.value).match(new RegExp(input.dataset.validation));
+		debugger;
+		return (!!input.value && (!input.dataset.validation || String(input.value).match(input.dataset.validation)))
 	}
 
 	onFormSubmit(event) {
@@ -108,10 +117,13 @@ class App extends React.Component {
 		const inputs = document.querySelectorAll(`*[data-form-type=${form}]`);
 
 		for (let input of inputs) {
-			body += `&${input.dataset.parameter}=${this.state[form][input.id]}`;
+			if (this.valdiateFormInputValue(input)) {
+				body += `&${input.dataset.parameter}=${this.state[form][input.id]}`;
+			} else {
+				console.log(`Input validation failed: ${input}`)
+				document.querySelector(`p[data-owner=${input.id}`).classList.remove('inactive');
+			}
 		}
-
-		debugger;
 
 		fetch(`${baseURL}/${this.state[form].endpoint}`, 
 			{ method: 'POST', 

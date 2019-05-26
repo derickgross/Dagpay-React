@@ -29,6 +29,7 @@ const FormSelect = (props) => {
 			data-form-type={props.formType}
 			data-parameter={props.parameter}
 			defaultValue={options.find(option => option.value === "Select the dependent's employee")}
+			data-validation={props.validation}
 		>
 			{ options }
 		</select>

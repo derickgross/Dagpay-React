@@ -124,7 +124,7 @@ li.dependent::before {
     font-weight: bold;
 }
 
-.dependents-hidden {
+.dependents-hidden, .inactive {
     display: none;
 }
 
@@ -166,7 +166,6 @@ button {
 .errorMessage {
     font-size: .7em;
     color: #c4122f;
-    display: none;
 }
 
 .confirmationMessage {

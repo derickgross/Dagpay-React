@@ -10,7 +10,7 @@ const employeeFormInputs = [
 		elementType: "input",
 		formType: "employeeForm",
 		defaultValue: "",
-		validation: /[0-9]+/
+		validation: "^[0-9]*$"
 	},
 	{
 		name: "First Name",
@@ -23,7 +23,7 @@ const employeeFormInputs = [
 		elementType: "input",
 		formType: "employeeForm",
 		defaultValue: "",
-		validation: /[a-z]/i
+		validation: ""
 	},
 	{
 		name: "Last Name",
@@ -62,7 +62,7 @@ const employeeFormInputs = [
 		elementType: "input",
 		formType: "employeeForm",
 		defaultValue: "",
-		validation: ""
+		validation: "^[0-9]*$"
 	}
 ];
 
@@ -99,8 +99,7 @@ const dependentFormInputs = [
 		errorMessage: "Please enter an integer value for the employee id",
 		elementType: "select",
 		formType: "dependentForm",
-		defaultValue: "",
-		validation: ""
+		defaultValue: "^[0-9]*$"
 	},
 	{
 		name: "First Name",
