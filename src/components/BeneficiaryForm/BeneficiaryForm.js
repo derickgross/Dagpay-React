@@ -21,6 +21,7 @@ const BeneficiaryForm = (props) => {
 
 	return (
 		<form action="" id={props.inputs[0].formType}>
+			<p className="success inactive money">{`${!!document.getElementById('firstNameInput') ? document.getElementById('firstNameInput').value : ""} ${!!document.getElementById('lastNameInput') ? document.getElementById('lastNameInput').value : ""} was successfully added.`}</p>
 			{inputs}
 			<button onClick={props.onFormSubmit} className="submitButton" data-form={props.inputs[0].formType} data-endpoint={props.inputs[0].endpoint}>Submit</button>
 		</form>

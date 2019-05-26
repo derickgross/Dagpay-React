@@ -99,13 +99,18 @@ class App extends React.Component {
 
 		this.setFormInputInState(formType, inputKey, inputValue);
 		document.querySelector(`p[data-owner=${event.target.id}`).classList.add('inactive');
+		document.querySelector(`p.success`).classList.add('inactive');
 	}
 
 	valdiateFormInputValue(input) {
 		// input has a value and (there is no validation expression or value matches validation expression)
 		const match = String(input.value).match(new RegExp(input.dataset.validation));
-		debugger;
 		return (!!input.value && (!input.dataset.validation || String(input.value).match(input.dataset.validation)))
+	}
+
+	onSuccessfulFormSubmit() {
+		document.querySelector(`p.success`).classList.remove('inactive');
+		//this.resetFormValues()
 	}
 
 	onFormSubmit(event) {
@@ -133,6 +138,7 @@ class App extends React.Component {
 		)
 		.then(response => {
 		  if (response.status === 200) {
+		  	this.onSuccessfulFormSubmit();
 		  	this.fetchEmployeesAndDependents();
 		  	// display success message
 		  } else {
