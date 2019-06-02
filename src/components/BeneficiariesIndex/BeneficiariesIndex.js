@@ -7,8 +7,8 @@ const BeneficiariesIndex = (props) => {
 			<Employee 
 				key={employee.employeeid}
 				employeeId={employee.employeeid}
-				firstName={employee.firstname}
-				lastName={employee.lastname}
+				firstName={employee.firstName}
+				lastName={employee.lastName}
 				deduction={employee.deduction}
 				dependents={!!employee.dependents ? employee.dependents : []}
 			/>

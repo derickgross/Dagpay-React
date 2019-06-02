@@ -7,7 +7,8 @@ import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesInd
 import CreateEmployee from './components/CreateEmployee/CreateEmployee'
 import CreateDependent from './components/CreateDependent/CreateDependent'
 
-const baseURL = 'https://dagpay2.azurewebsites.net/api';
+const baseURL = 'http://dagpayapi.azurewebsites.net/api';
+// const baseURL = 'https://localhost:5001/api';
 
 class App extends React.Component {
 	constructor(props) {
@@ -17,7 +18,7 @@ class App extends React.Component {
 			currentView: "Beneficiaries",
 			employees: [],
 			employeeForm: {
-				endpoint: "AddEmployee",
+				endpoint: "employee",
 				employeeIdInput: "",
 				firstNameInput: "",
 				lastNameInput: "",
@@ -25,7 +26,7 @@ class App extends React.Component {
 				experienceInput: 0
 			},
 			dependentForm: {
-				endpoint: "AddDependent",
+				endpoint: "dependent",
 				employeeIdInput: "Select the dependent's employee",
 				firstNameInput: "",
 				lastNameInput: ""
@@ -58,7 +59,7 @@ class App extends React.Component {
 	}
 
 	fetchEmployeesAndDependents() {
-		fetch(`${baseURL}/GetEmployeesAndDependents`, {
+		fetch(`${baseURL}/employee`, {
 			method: 'GET'
 		})
 		.then(response => {
@@ -121,26 +122,34 @@ class App extends React.Component {
 		console.log(`Form submit triggered.` + event.target);
 
 		const form = event.target.dataset.form;
-		let body = "params=";
+		//let body = "params=";
+		const formData = {};
+		let body;
 		const inputs = document.querySelectorAll(`*[data-form-type=${form}]`);
 
 		for (let input of inputs) {
 			if (this.valdiateFormInputValue(input)) {
-				body += `&${input.dataset.parameter}=${this.state[form][input.id]}`;
+				//body += `&${input.dataset.parameter}=${this.state[form][input.id]}`;
+				formData[input.dataset.parameter] = this.state[form][input.id];
 			} else {
 				console.log(`Input validation failed: ${input}`)
 				document.querySelector(`p[data-owner=${input.id}`).classList.remove('inactive');
 			}
 		}
 
+		body = JSON.stringify(formData);
+
+		// debugger;
+
 		fetch(`${baseURL}/${this.state[form].endpoint}`, 
 			{ method: 'POST', 
 				body: body, 
-				headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+				// headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+				headers: { 'Content-type': 'application/json' }
 			}
 		)
 		.then(response => {
-		  if (response.status === 200) {
+		  if (response.status === 201) {
 		  	this.onSuccessfulFormSubmit(event);
 		  	this.fetchEmployeesAndDependents();
 		  	// display success message

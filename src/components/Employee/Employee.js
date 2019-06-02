@@ -5,20 +5,23 @@ import "./Employee.css"
 const Employee = (props) => {
 	let dependentsDeductions = 0;
 
-	const dependents = props.dependents.map(dependent => {
-		dependentsDeductions += Number.parseFloat(dependent.deduction.toFixed(2));
-		console.log(`Employee ID for dependent: ${props.employeeId}, ${props}`)
-		
-		return (
-			<Dependent
-				key={`${dependent.firstname}-${dependent.lastname}`}
-				employeeId={props.employeeId}
-				firstName={dependent.firstname}
-				lastName={dependent.lastname}
-				deduction={dependent.deduction}
-			/>
-		)
-	})
+	let dependents = [];
+
+	if (props.dependents.length > 0) {
+		dependents = props.dependents.map(dependent => {
+			dependentsDeductions += Number.parseFloat(dependent.deduction.toFixed(2));
+
+			return (
+				<Dependent
+					key={`${dependent.firstName}-${dependent.lastName}`}
+					employeeId={props.employeeId}
+					firstName={dependent.firstName}
+					lastName={dependent.lastName}
+					deduction={dependent.deduction}
+				/>
+			)
+		})
+	}
 
 	return (
 		<li 
