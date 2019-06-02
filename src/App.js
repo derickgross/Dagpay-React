@@ -169,7 +169,7 @@ class App extends React.Component {
 			switch (formType) {
 				case "employeeForm":
 					return {
-						endpoint: "AddEmployee",
+						endpoint: "employee",
 						employeeIdInput: "",
 						firstNameInput: "",
 						lastNameInput: "",
@@ -179,7 +179,7 @@ class App extends React.Component {
 					break;
 				case "dependentForm":
 					return {
-						endpoint: "AddDependent",
+						endpoint: "dependent",
 						employeeIdInput: "Select the dependent's employee",
 						firstNameInput: "",
 						lastNameInput: ""
