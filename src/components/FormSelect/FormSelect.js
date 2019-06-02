@@ -4,9 +4,9 @@ import FormOption from '../FormOption/FormOption'
 const FormSelect = (props) => {
 	const options = props.options.map(option => {
 		return <FormOption 
-					key={option.employeeid}
-					value={option.employeeid} 
-					displayText={`${option.lastname}, ${option.firstname}`}
+					key={option.employeeId}
+					value={option.employeeId} 
+					displayText={`${option.lastName}, ${option.firstName}`}
 				/>
 	})
 
