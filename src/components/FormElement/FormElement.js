@@ -43,7 +43,7 @@ const FormElement = (props) => {
 	}
 
 	return (
-		<div>
+		<div className="form-select">
 			<label htmlFor={props.input.id}>{props.input.name}</label>
 				{ processInput() }	
 			<p className="inactive errorMessage" data-owner={props.input.id}>{props.input.errorMessage}</p>

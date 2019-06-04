@@ -45,7 +45,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 
 form {
     text-align: left;
-    margin-left: 25%;
+    margin: 0 auto;
+    width: 50%;
 }
 
 header, footer {
@@ -137,10 +138,14 @@ select, input {
     height: 35px;
     letter-spacing: 0;
     padding: 0 10px;
-    /*width: 35%;
-    min-width: 280px;*/
-    max-width: 100%;
-    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    /* max-width: 100%; */
+    margin: 0 0 8px 0;
+}
+
+.form-select {
+    width: 100%;
 }
 
 input {
@@ -196,4 +201,10 @@ body.tab-navigator select:focus,
 body.tab-navigator textarea:focus,
 body.tab-navigator li:focus {
     outline: 5px auto -webkit-focus-ring-color;
+}
+
+@media screen and (max-width: 412px) {
+    form {
+        width: 90%;
+    }
 }
