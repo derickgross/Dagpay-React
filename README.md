@@ -22,10 +22,8 @@ The client has four sections:
 
 Use the following endpoints to interact with the Dagpay C# Azure Functions API:
 
-**_https://dagpay2.azurewebsites.net/api/AddEmployee_** - add a new employee
+**_https://dagpayapi.azurewebsites.net/api/employee_** - add a new employee, get all employees (and their dependents)
 
-**_https://dagpay2.azurewebsites.net/api/AddDependent_** - add a new dependent
-
-**_https://dagpay2.azurewebsites.net/api/GetEmployeesAndDependents_** - get a JSON response with all employees and dependents, and their individual payroll deductions
+**_https://dagpayapi.azurewebsites.net/api/dependent_** - add a new dependent (or get all dependents)
 
 _* Based on total deductions of $1000/year for each employee and $500/year for each dependent, Dagpay calculates the portion owed for each of 26 biweekly pay periods in a year. Beneficiaries whose first names begin with 'A' receive a 10% discount._
