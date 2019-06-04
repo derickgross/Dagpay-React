@@ -100,8 +100,10 @@ h1 {
 section ul {
     text-align: left;
 }
-section ul.employees {
-    margin-left: 20%;
+ul.employees {
+    width: 50%;
+    margin: 0 auto;
+    /*margin-left: 20%;*/
 }
 
 li.employee, li.dependent {
@@ -204,7 +206,7 @@ body.tab-navigator li:focus {
 }
 
 @media screen and (max-width: 412px) {
-    form {
+    form, ul.employees {
         width: 90%;
     }
 }
