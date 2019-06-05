@@ -5,8 +5,8 @@ const BeneficiariesIndex = (props) => {
 	const employees = props.employees.map(employee => {
 		return (
 			<Employee 
-				key={employee.employeeid}
-				employeeId={employee.employeeid}
+				key={employee.employeeId}
+				employeeId={employee.employeeId}
 				firstName={employee.firstName}
 				lastName={employee.lastName}
 				deduction={employee.deduction}
