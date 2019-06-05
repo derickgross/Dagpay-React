@@ -122,14 +122,12 @@ class App extends React.Component {
 		console.log(`Form submit triggered.` + event.target);
 
 		const form = event.target.dataset.form;
-		//let body = "params=";
 		const formData = {};
 		let body;
 		const inputs = document.querySelectorAll(`*[data-form-type=${form}]`);
 
 		for (let input of inputs) {
 			if (this.valdiateFormInputValue(input)) {
-				//body += `&${input.dataset.parameter}=${this.state[form][input.id]}`;
 				formData[input.dataset.parameter] = this.state[form][input.id];
 			} else {
 				console.log(`Input validation failed: ${input}`)
@@ -139,12 +137,9 @@ class App extends React.Component {
 
 		body = JSON.stringify(formData);
 
-		// debugger;
-
 		fetch(`${baseURL}/${this.state[form].endpoint}`, 
 			{ method: 'POST', 
-				body: body, 
-				// headers: { 'Content-type': 'application/x-www-form-urlencoded' }
+				body: body,
 				headers: { 'Content-type': 'application/json' }
 			}
 		)
