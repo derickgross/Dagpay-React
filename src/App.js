@@ -7,8 +7,8 @@ import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesInd
 import CreateEmployee from './components/CreateEmployee/CreateEmployee'
 import CreateDependent from './components/CreateDependent/CreateDependent'
 
-const baseURL = 'http://dagpayapi.azurewebsites.net/api';
-// const baseURL = 'https://localhost:5001/api';
+// const baseURL = 'http://dagpayapi.azurewebsites.net/api';
+const baseURL = 'https://localhost:5001/api';
 
 class App extends React.Component {
 	constructor(props) {

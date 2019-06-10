@@ -1,17 +1,17 @@
 const employeeFormInputs = [
-	{
-		name: "EmployeeId",
-		type: "number",
-		id: "employeeIdInput",
-		placeholder: "Enter an integer value",
-		parameter: "employeeid",
-		labelText: "Employee Id",
-		errorMessage: "Please enter an integer value for the employee id",
-		elementType: "input",
-		formType: "employeeForm",
-		defaultValue: "",
-		validation: "^[0-9]*$"
-	},
+	// {
+	// 	name: "EmployeeId",
+	// 	type: "number",
+	// 	id: "employeeIdInput",
+	// 	placeholder: "Enter an integer value",
+	// 	parameter: "employeeid",
+	// 	labelText: "Employee Id",
+	// 	errorMessage: "Please enter an integer value for the employee id",
+	// 	elementType: "input",
+	// 	formType: "employeeForm",
+	// 	defaultValue: "",
+	// 	validation: "^[0-9]*$"
+	// },
 	{
 		name: "First Name",
 		type: "text",
