@@ -6,9 +6,12 @@ import Main from './components/Main/Main'
 import BeneficiariesIndex from './components/BeneficiariesIndex/BeneficiariesIndex'
 import CreateEmployee from './components/CreateEmployee/CreateEmployee'
 import CreateDependent from './components/CreateDependent/CreateDependent'
+import Auth from './components/Auth/Auth'
+import RegisterForm from './components/RegisterForm/RegisterForm'
+import LoginForm from './components/LoginForm/LoginForm'
 
-// const baseURL = 'http://dagpayapi.azurewebsites.net/api';
-const baseURL = 'https://localhost:5001/api';
+const baseURL = 'http://dagpayapi.azurewebsites.net';
+//const baseURL = 'https://localhost:5001';
 
 class App extends React.Component {
 	constructor(props) {
@@ -16,6 +19,7 @@ class App extends React.Component {
 
 		this.state = {
 			currentView: "Beneficiaries",
+			currentAuthForm: "Register",
 			employees: [],
 			employeeForm: {
 				endpoint: "employee",
@@ -31,7 +35,8 @@ class App extends React.Component {
 				firstNameInput: "",
 				lastNameInput: ""
 			},
-			employeeFormInputs: []
+			employeeFormInputs: [],
+			token: ""
 		}
 
 		this.supportTabNavigator = this.supportTabNavigator.bind(this);
@@ -45,6 +50,11 @@ class App extends React.Component {
 		this.valdiateFormInputValue = this.valdiateFormInputValue.bind(this);
 		this.onFormSubmit = this.onFormSubmit.bind(this);
 		this.calculateTotalDeductions = this.calculateTotalDeductions.bind(this);
+		this.handleRegister = this.handleRegister.bind(this);
+		this.handleLogin = this.handleLogin.bind(this);
+		this.setCurrentAuthForm = this.setCurrentAuthForm.bind(this);
+		this.displayCurrentAuthForm = this.displayCurrentAuthForm.bind(this);
+		this.handleAuthClick = this.handleAuthClick.bind(this);
 	}
 
 	componentDidMount() {
@@ -58,8 +68,103 @@ class App extends React.Component {
 	  }
 	}
 
+	handleAuthClick(event) {
+		event.preventDefault();
+
+		const newAuthForm = event.target.dataset.form;
+
+		this.setCurrentAuthForm(newAuthForm);
+
+		this.displayCurrentAuthForm();
+	}
+
+	async setCurrentAuthForm(form) {
+		await this.setState(prevState => {
+			return { currentAuthForm: form }
+		});
+	}
+
+	displayCurrentAuthForm() {
+		switch (this.state.currentAuthForm) {
+			case "Register":
+				return <RegisterForm handleRegister={this.handleRegister} />
+			case "Login":
+				return <LoginForm handleLogin={this.handleLogin} currentView={this.state.currentView} />
+			default:
+				return <RegisterForm handleRegister={this.handleRegister} />
+		}
+	}
+
+	handleRegister(event) {
+		event.preventDefault();
+
+		const username = document.getElementById('registerUsername').value;
+		const password = document.getElementById('registerPassword').value;
+		const passwordConfirmation = document.getElementById('registerPasswordConfirmation').value;
+		const nextView = this.state.currentView;
+
+		if (password === passwordConfirmation) {
+			const formData = {
+				username: username,
+				password: password
+			};
+
+			const body = JSON.stringify(formData);
+
+			fetch(`${baseURL}/user/register`, 
+				{ method: 'POST', 
+					body: body,
+					headers: { 'Content-type': 'application/json' }
+				}
+			)
+			.then(response => {
+				if (response.status === 201) {
+					this.handleLogin(username, password, nextView);
+				} else {
+				  // display failure message
+				}
+			})
+			.catch(function(error) {
+				console.log(`Something went wrong while submitting registering: ${error}`)
+			});
+		} else {
+			console.log("Password and confirmation do not match.")
+		}
+	}
+
+	handleLogin(username, password, nextView) {
+
+		const formData = {
+			username: username,
+			password: password
+		};
+
+		const body = JSON.stringify(formData);
+
+		fetch(`${baseURL}/user/authenticate`, 
+			{ method: 'POST', 
+				body: body,
+				headers: { 'Content-type': 'application/json' }
+			}
+		)
+		.then(response => {
+			if (response.status === 200) {
+				response.json()
+				.then(data => {
+					this.setState({token: data.token})
+					this.setCurrentView(nextView);
+				})	
+			} else {
+			  // display failure message
+			}
+		})
+		.catch(function(error) {
+			console.log(`Something went wrong while submitting registering: ${error}`)
+		});
+	}
+
 	fetchEmployeesAndDependents() {
-		fetch(`${baseURL}/employee`, {
+		fetch(`${baseURL}/api/employee`, {
 			method: 'GET'
 		})
 		.then(response => {
@@ -105,7 +210,7 @@ class App extends React.Component {
 
 	valdiateFormInputValue(input) {
 		// input has a value and (there is no validation expression or value matches validation expression)
-		const match = String(input.value).match(new RegExp(input.dataset.validation));
+		//const match = String(input.value).match(new RegExp(input.dataset.validation));
 		return (!!input.value && (!input.dataset.validation || String(input.value).match(input.dataset.validation)))
 	}
 
@@ -137,23 +242,26 @@ class App extends React.Component {
 
 		body = JSON.stringify(formData);
 
-		fetch(`${baseURL}/${this.state[form].endpoint}`, 
+		fetch(`${baseURL}/api/${this.state[form].endpoint}`, 
 			{ method: 'POST', 
 				body: body,
-				headers: { 'Content-type': 'application/json' }
+				headers: { 
+					'Content-type': 'application/json',
+					'Authorization': `Bearer ${this.state.token}`
+				 }
 			}
 		)
 		.then(response => {
-		  if (response.status === 201) {
-		  	this.onSuccessfulFormSubmit(event);
-		  	this.fetchEmployeesAndDependents();
-		  	// display success message
-		  } else {
-		    // display failure message
-		  }
+			if (response.status === 201) {
+				this.onSuccessfulFormSubmit(event);
+				this.fetchEmployeesAndDependents();
+				// display success message
+			} else {
+			  // display failure message
+			}
 		})
 		.catch(function(error) {
-		  console.log(`Something went wrong while submitting ${form}: ${error}`)
+			console.log(`Something went wrong while submitting ${form}: ${error}`)
 		});
 	}
 
@@ -171,7 +279,6 @@ class App extends React.Component {
 						departmentInput: "",
 						experienceInput: 0
 					}
-					break;
 				case "dependentForm":
 					return {
 						endpoint: "dependent",
@@ -179,7 +286,6 @@ class App extends React.Component {
 						firstNameInput: "",
 						lastNameInput: ""
 					}
-					break;
 				default:
 					break;
 			}
@@ -214,6 +320,7 @@ class App extends React.Component {
 							displayDependentsListener={this.displayDependents}
 						/>
 			case "CreateEmployee":
+				if (!this.state.token) return <Auth handleRegister={this.handleRegister} handleLogin={this.handleLogin} nextView="CreateEmployee" handleAuthClick={this.handleAuthClick} displayCurrentAuthForm={this.displayCurrentAuthForm} />
 				return <CreateEmployee 
 							onFormElementChange={this.onFormElementChange} 
 							setFormInputInState={this.setFormInputInState}
@@ -221,6 +328,7 @@ class App extends React.Component {
 							formValues={this.state.employeeForm}
 						/>
 			case "CreateDependent":
+				if (!this.state.token) return <Auth handleRegister={this.handleRegister} handleLogin={this.handleLogin} nextView="CreateDependent" handleAuthClick={this.handleAuthClick} displayCurrentAuthForm={this.displayCurrentAuthForm} />
 				return <CreateDependent 
 							employeeSelectOptions={this.state.employees} 
 							onFormElementChange={this.onFormElementChange}
