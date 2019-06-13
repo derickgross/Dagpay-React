@@ -57,6 +57,7 @@ header, footer {
 }
 header li {
     list-style: none;
+    color: #c4122f;
     display: inline-block;
 }
 
