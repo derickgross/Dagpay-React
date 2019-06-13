@@ -35,7 +35,6 @@ class App extends React.Component {
 				firstNameInput: "",
 				lastNameInput: ""
 			},
-			employeeFormInputs: [],
 			token: ""
 		}
 
@@ -97,6 +96,7 @@ class App extends React.Component {
 
 	handleRegister(event) {
 		event.preventDefault();
+		this.clearRegisterAndLoginErrors();
 
 		const username = document.getElementById('registerUsername').value;
 		const password = document.getElementById('registerPassword').value;
@@ -121,18 +121,19 @@ class App extends React.Component {
 				if (response.status === 201) {
 					this.handleLogin(username, password, nextView);
 				} else {
-				  // display failure message
+				  this.displayRegisterError("Please try again.");
 				}
 			})
 			.catch(function(error) {
-				console.log(`Something went wrong while submitting registering: ${error}`)
+				this.displayRegisterError("Please contact the site administrator.");
 			});
 		} else {
-			console.log("Password and confirmation do not match.")
+			this.displayRegisterError("Please make sure password and password confirmation match.");
 		}
 	}
 
 	handleLogin(username, password, nextView) {
+		this.clearRegisterAndLoginErrors();
 
 		const formData = {
 			username: username,
@@ -155,12 +156,27 @@ class App extends React.Component {
 					this.setCurrentView(nextView);
 				})	
 			} else {
-			  // display failure message
+			  this.displayLoginError();
 			}
 		})
 		.catch(function(error) {
 			console.log(`Something went wrong while submitting registering: ${error}`)
 		});
+	}
+
+	displayRegisterError(message = "") {
+		const element = document.getElementById('registerError')
+		element.classList.remove('inactive');
+		element.innerHTML = `Unable to register the new user. ${message}`
+	}
+
+	displayLoginError() {
+		document.getElementById('loginError').classList.remove('inactive');
+	}
+
+	clearRegisterAndLoginErrors() {
+		document.getElementById('registerError').classList.add('inactive');
+		document.getElementById('loginError').classList.add('inactive');
 	}
 
 	fetchEmployeesAndDependents() {
@@ -210,7 +226,6 @@ class App extends React.Component {
 
 	valdiateFormInputValue(input) {
 		// input has a value and (there is no validation expression or value matches validation expression)
-		//const match = String(input.value).match(new RegExp(input.dataset.validation));
 		return (!!input.value && (!input.dataset.validation || String(input.value).match(input.dataset.validation)))
 	}
 
